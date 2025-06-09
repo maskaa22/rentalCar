@@ -1,0 +1,42 @@
+.home {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/home-car-x1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 71px);
+  width: 100%;
+  background-position: center;
+  position: relative;
+}
+.info {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+.title {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 120%;
+}
+.text {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+.btn {
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  padding: 12px 88px;
+
+  color: white;
+  background: var(--main-color-button);
+}
