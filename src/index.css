@@ -64,6 +64,10 @@ img {
   height: auto;
 }
 
+input {
+  outline: none;
+}
+
 .container {
   padding: 0 120px;
 }
