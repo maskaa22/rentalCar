@@ -17,7 +17,13 @@ const slice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = [...state.items, ...action.payload.cars];
+
+        if (action.payload.resetList) {
+          state.items = action.payload.cars;
+        } else {
+          state.items = [...state.items, ...action.payload.cars];
+        }
+
         state.page = action.payload.page;
         state.totalPages = action.payload.totalPages;
       })

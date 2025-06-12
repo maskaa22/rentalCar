@@ -4,27 +4,48 @@ import Search from "../../components/search/Search";
 import Cars from "../../components/cars/Cars";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/cars/operations";
-import { selectCars } from "../../redux/cars/selectors";
+import { selectCars, selectFilteredCars } from "../../redux/cars/selectors";
 import LoadMore from "../../components/loadMore/LoadMore";
 import { toast, ToastContainer } from "react-toastify";
+import { selectNameFilter } from "../../redux/filters/selectors";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
+  
   const { items: cars, page, totalPages } = useSelector(selectCars);
+  const filtersCars = useSelector(selectFilteredCars);
+  const currenFilters = useSelector(selectNameFilter);
 
   const [pagePagination, setPagePagination] = useState(page || 1);
+  const [prevReduxFilters, setPrevReduxFilters] = useState({});
 
   useEffect(() => {
     const abortController = new AbortController();
 
-    dispatch(
-      fetchCars({ page: pagePagination, signal: abortController.signal })
-    );
+    const isNewSearch =
+      JSON.stringify(currenFilters) !== JSON.stringify(prevReduxFilters);
 
+    if (isNewSearch && pagePagination !== 1) {
+      setPagePagination(1);
+
+      return;
+    }
+
+    const resetListOnFetch = pagePagination === 1;
+
+    dispatch(
+      fetchCars({
+        page: pagePagination,
+        signal: abortController.signal,
+        filters: currenFilters,
+        resetList: resetListOnFetch,
+      })
+    );
+    setPrevReduxFilters(currenFilters);
     return () => {
       abortController.abort();
     };
-  }, [dispatch, pagePagination]);
+  }, [dispatch, pagePagination, currenFilters, prevReduxFilters]);
 
   const notify = (text) => toast.warning(text);
 
@@ -42,7 +63,7 @@ const CatalogPage = () => {
       <div className={c.innerContainer}>
         <Search />
         <ToastContainer />
-        <Cars cars={cars} />
+        <Cars cars={filtersCars} />
         {cars && cars.length > 0 && page < totalPages && (
           <LoadMore loadMore={loadMore} />
         )}

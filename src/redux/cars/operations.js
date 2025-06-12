@@ -8,11 +8,22 @@ export const api = axios.create({
 
 export const fetchCars = createAsyncThunk(
   "cars/fetchAll",
-  async ({ page, signal }, thunkAPI) => {
+  async ({ page = 1, signal, filters = {}, resetList = false }, thunkAPI) => {
     try {
-      const response = await api.get("/cars", { params: { page }, signal });
+      const params = {
+        page,
+        limit: 12,
+        ...filters
+      }
+      
+      const response = await api.get("/cars", { params, signal });
 
-      return response.data;
+      return {
+        cars: response.data.cars,
+        page: response.data.page,
+        totalPages: response.data.totalPages,
+        resetList: resetList,
+      };
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
     }
