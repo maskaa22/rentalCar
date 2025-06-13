@@ -1,11 +1,20 @@
 import { useRef } from "react";
 import c from "./Input.module.css";
 
-const Input = ({ prefix, value, onChange }) => {
+const Input = ({
+  prefix = "",
+  value,
+  onChange,
+  classInput,
+  placeholder,
+  name,
+}) => {
   const inputRef = useRef(null);
 
+  const isPrefixUsed = prefix.length > 0;
+
   const handleFocus = (e) => {
-    if (e.target.selectionStart < prefix.length) {
+    if (isPrefixUsed && e.target.selectionStart < prefix.length) {
       setTimeout(() => {
         inputRef.current.setSelectionRange(prefix.length, prefix.length);
       }, 0);
@@ -13,7 +22,7 @@ const Input = ({ prefix, value, onChange }) => {
   };
 
   const handleClick = (e) => {
-    if (e.target.selectionStart < prefix.length) {
+    if (isPrefixUsed && e.target.selectionStart < prefix.length) {
       e.preventDefault();
       setTimeout(() => {
         inputRef.current.setSelectionRange(prefix.length, prefix.length);
@@ -24,28 +33,36 @@ const Input = ({ prefix, value, onChange }) => {
   const handleChangeInput = (e) => {
     let val = e.target.value;
 
-    if (!val.startsWith(prefix)) {
-      val = prefix;
-    }
+    if (isPrefixUsed) {
+      if (!val.startsWith(prefix)) {
+        val = prefix;
+      }
 
-    const contentAfterPrefix = val.substring(prefix.length);
+      const contentAfterPrefix = val.substring(prefix.length);
 
-    const filteredContent = contentAfterPrefix.replace(/[^0-9]/g, "");
+      const filteredContent = contentAfterPrefix.replace(/[^0-9]/g, "");
 
-    if (onChange) {
-      onChange({ target: { value: prefix + filteredContent } });
+      if (onChange) {
+        onChange({ target: { value: prefix + filteredContent } });
+      }
+    } else {
+      if (onChange) {
+        onChange(e);
+      }
     }
   };
 
   return (
     <input
-      className={c.input}
+      className={classInput}
       ref={inputRef}
       type="text"
-      value={value || prefix}
+      value={isPrefixUsed ? (value === "" ? prefix : value || prefix) : value}
       onChange={handleChangeInput}
       onFocus={handleFocus}
       onClick={handleClick}
+      placeholder={placeholder}
+      name={name}
     />
   );
 };

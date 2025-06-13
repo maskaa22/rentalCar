@@ -29,3 +29,19 @@ export const fetchCars = createAsyncThunk(
     }
   }
 );
+
+export const fetchOneCar = createAsyncThunk(
+  "car/fetchAll",
+  async (id, thunkAPI) => {
+    try {
+      const response = await api.get(`/cars/${id}`);
+
+      // console.log(response.data);
+      
+
+      return response.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);

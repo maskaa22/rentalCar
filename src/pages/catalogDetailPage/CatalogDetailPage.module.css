@@ -1,0 +1,98 @@
+.innerContainer {
+  display: flex;
+  gap: 72px;
+  padding: 84px 0 104px;
+}
+.formContainer {
+  width: 640px;
+}
+.imgContainer {
+}
+.img {
+  border-radius: 19px;
+}
+
+.info {
+  width: 488px;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+}
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+}
+.title span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main-color-gray);
+  margin-left: 16px;
+}
+.adressContainer {
+  display: flex;
+  margin-top: 8px;
+}
+.adress {
+  gap: 4px;
+}
+.adress,
+.mileage {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  display: flex;
+  align-items: center;
+}
+.mileage {
+  margin-left: 16px;
+}
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--main-color-button);
+  margin-top: 16px;
+}
+.description,
+.rentalItem,
+.specificationsItem,
+.accessoriesItem {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  margin-top: 32px;
+}
+.rental,
+.specifications,
+.accessories {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  margin-top: 68px;
+}
+.rentalItem,
+.specificationsItem,
+.accessoriesItem {
+  margin-bottom: 16px;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rentalItem:first-child,
+.specificationsItem:first-child,
+.accessoriesItem:first-child {
+  margin-top: 20px;
+}
+.rentalItem:last-child,
+.specificationsItem:last-child,
+.accessoriesItem:last-child {
+  margin-bottom: 0;
+}
+.specifications,
+.accessories {
+  margin-top: 110px;
+}
