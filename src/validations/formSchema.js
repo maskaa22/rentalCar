@@ -1,38 +1,27 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 export const formSchema = Joi.object({
-  nameUser: Joi.string()
-    .min(3)
-    .max(30)
-    .required()
-    .messages({
-      'string.empty': 'Ім\'я не може бути порожнім',
-      'string.min': 'Ім\'я повинно містити принаймні {#limit} символи',
-      'string.max': 'Ім\'я не повинно перевищувати {#limit} символів',
-      'any.required': 'Ім\'я є обов\'язковим',
-    }),
+  nameUser: Joi.string().min(3).max(30).required().messages({
+    "string.empty": "Name cannot be empty.",
+    "string.min": "The name must contain at least {#limit} characters",
+    "string.max": "The name must not exceed {#limit} characters.",
+    "any.required": "Name is required.",
+  }),
 
   email: Joi.string()
-    .email({ tlds: { allow: false } }) // { allow: false } дозволяє ігнорувати TLD (top-level domains)
+    .email({ tlds: { allow: false } })
     .required()
     .messages({
-      'string.empty': 'Email не може бути порожнім',
-      'string.email': 'Введіть дійсний email',
-      'any.required': 'Email є обов\'язковим',
+      "string.empty": "Email cannot be empty.",
+      "string.email": "Please enter a valid email.",
+      "any.required": "Email is required",
     }),
 
-  date: Joi.string()
-    .optional() // Це поле не є обов'язковим
-    .allow('') // Дозволити порожній рядок
-    .messages({
-      // 'string.pattern.base': 'Будь ласка, введіть дату у форматі РРРР-ММ-ДД.'
-    }),
+  date: Joi.date().allow(null).messages({
+    "date.base": "Please select a valid date.",
+  }),
 
-  comment: Joi.string()
-    .max(500)
-    .optional() // Це поле не є обов'язковим
-    .allow('') // Дозволити порожній рядок
-    .messages({
-      'string.max': 'Коментар не повинен перевищувати {#limit} символів',
-    }),
+  comment: Joi.string().max(200).optional().allow("").messages({
+    "string.max": "Comment must not exceed {#limit} characters",
+  }),
 });
