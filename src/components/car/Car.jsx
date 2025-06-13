@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
 import c from "./Car.module.css";
 import { useNavigate } from "react-router-dom";
 import { Adress, Mileage, Type } from "../../utils/CarFunctions";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/favorites/selectors";
+import { addFavorite, removeFavorite } from "../../redux/favorites/slice";
 
 const Car = ({ car }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const favoriteCars = useSelector(selectFavorites);
 
-  useEffect(() => {
-    const stored = localStorage.getItem("favorites") || "{}";
-    const favorites = JSON.parse(stored);
-    setIsFavorite(favorites[car.id]);
-  }, [car.id]);
+  const isFavorite = favoriteCars.some((favCar) => favCar.id === car.id);
 
   const toggleFavorite = () => {
-    const stored = localStorage.getItem("favorites") || "{}";
-    const favorites = JSON.parse(stored);
-    const updated = { ...favorites, [car.id]: !favorites[car.id] };
-    localStorage.setItem("favorites", JSON.stringify(updated));
-    setIsFavorite(!favorites[car.id]);
+    if (isFavorite) {
+      dispatch(removeFavorite(car.id));
+    } else {
+      dispatch(addFavorite(car));
+    }
   };
 
   return (

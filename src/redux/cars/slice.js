@@ -3,7 +3,7 @@ import { fetchCars, fetchOneCar } from "./operations";
 
 const initialState = {
   items: [],
-  item: [],
+  item: null,
   loading: false,
   error: null,
   page: 1,
