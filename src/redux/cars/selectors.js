@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { selectNameFilter } from "../filters/selectors";
 
 export const selectCars = (state) => state.cars;
+export const selectOneCar = (state) => state.cars.item;
 export const selectLoading = (state) => state.cars.loading;
 export const selectError = (state) => state.cars.error;
 

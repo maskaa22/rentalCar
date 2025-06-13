@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import c from "./Car.module.css";
+import { useNavigate } from "react-router-dom";
+import { Adress, Mileage, Type } from "../../utils/CarFunctions";
 
 const Car = ({ car }) => {
+  const navigate = useNavigate();
+
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -17,17 +21,6 @@ const Car = ({ car }) => {
     localStorage.setItem("favorites", JSON.stringify(updated));
     setIsFavorite(!favorites[car.id]);
   };
-
-  const address = car.address;
-  const parts = address.split(", ");
-  const cityCountry = parts.slice(-2).join(" | ");
-
-  const word = `${car.type}`;
-  const formattedType =
-    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-
-  const mileage = `${car.mileage}`;
-  const formattedMileage = mileage.slice(0, 1) + " " + mileage.slice(1);
 
   return (
     <div className={c.card}>
@@ -53,14 +46,16 @@ const Car = ({ car }) => {
         </div>
         <div className={c.location}>
           <p>
-            {cityCountry} | {car.rentalCompany} |
+            {Adress(car)} | {car.rentalCompany} |
           </p>
           <p className={c.type}>
-            {formattedType} | {formattedMileage} km
+            {Type(car)} | {Mileage(car)} km
           </p>
         </div>
       </div>
-      <button className={c.btn}>Read more</button>
+      <button className={c.btn} onClick={() => navigate(`/catalog/${car.id}`)}>
+        Read more
+      </button>
     </div>
   );
 };

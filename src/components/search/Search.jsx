@@ -7,7 +7,12 @@ import { fetchBrands } from "../../redux/brands/operations";
 import { selectBrands } from "../../redux/brands/selectors";
 import { changeFilter } from "../../redux/filters/slice";
 import { price } from "../../constants/constants";
-import { handleChangeBrand, handleChangeFrom, handleChangePrice, handleChangeTo } from "../../utils/SearchFunctions";
+import {
+  handleChangeBrand,
+  handleChangeFrom,
+  handleChangePrice,
+  handleChangeTo,
+} from "../../utils/SearchFunctions";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -78,17 +83,20 @@ const Search = () => {
       </div>
       <div className={c.mileage}>
         <label className={c.label}>Сar mileage / km</label>
-        <Input
-          prefix="From "
-          value={"From " + mileageFrom}
-          onChange={(e) => handleChangeFrom(e, setMileageFrom)}
-        />
+          <Input
+            prefix="From "
+            value={"From " + mileageFrom}
+            onChange={(e) => handleChangeFrom(e, setMileageFrom)}
+            classInput={c.input}
+          />
         <Input
           prefix="To "
           value={"To " + mileageTo}
           onChange={(e) => handleChangeTo(e, setMileageTo)}
+          classInput={c.input}
         />
       </div>
+        
       <button className={c.btn} onClick={handleSubmit}>
         Search
       </button>
