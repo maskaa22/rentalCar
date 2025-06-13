@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "../input/Input";
+
 import c from "./For,.module.css";
 import { formSchema } from "../../validations/formSchema";
 import { toast, ToastContainer } from "react-toastify";
+import Calendar from "../calendar/Calendar";
 
 const Form = () => {
   const [values, setValues] = useState({
     nameUser: "",
     email: "",
-    date: "",
+    date: null,
     comment: "",
   });
   const [errors, setErrors] = useState({});
@@ -24,6 +26,20 @@ const Form = () => {
       setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[name];
+        return newErrors;
+      });
+    }
+  };
+  const handleDateChange = (date) => {
+    setValues((prev) => ({
+      ...prev,
+      date: date,
+    }));
+
+    if (errors.date) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors.date;
         return newErrors;
       });
     }
@@ -92,13 +108,8 @@ const Form = () => {
           value={values.email}
           onChange={handleChange}
         />
-        <Input
-          classInput={c.input}
-          placeholder="Booking date"
-          name="date"
-          value={values.date}
-          onChange={handleChange}
-        />
+
+        <Calendar value={values.date} handleChange={handleDateChange} />
 
         <textarea
           placeholder="Comment"

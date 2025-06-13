@@ -29,6 +29,10 @@
   line-height: 125%;
   color: var(--main-color-gray);
 }
+.icon {
+  width: 16px;
+  height: 16px;
+}
 textarea {
   height: 88px;
 }

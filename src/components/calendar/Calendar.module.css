@@ -1,0 +1,151 @@
+.calerndar {
+  width: 576px;
+  height: 48px;
+  padding: 14px 20px;
+  background-color: var(--main-color-inputs);
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  text-align: start;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+}
+
+.dateValue {
+  color: var(--main-color-black);
+  font-weight: 500;
+}
+
+.placeholderText {
+  color: var(--main-color-gray);
+}
+
+:global(.react-datepicker) {
+  border-radius: 12px;
+  border: 1px solid var(--main-color-button);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* -------------------- Заголовок календаря (Місяць/Рік) -------------------- */
+:global(.react-datepicker__header) {
+  background-color: #fff;
+  border-bottom: none;
+  padding-top: 12px;
+  padding-bottom: 0;
+  position: relative;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+:global(.react-datepicker__current-month) {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+  text-align: center;
+}
+
+/* -------------------- Навігаційні стрілки (Previous/Next Month) -------------------- */
+:global(.react-datepicker__navigation) {
+  top: 18px;
+  line-height: 1.7;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global(.react-datepicker__navigation--previous) {
+  left: 12px;
+}
+
+:global(.react-datepicker__navigation--next) {
+  right: 12px;
+}
+
+:global(
+    .react-datepicker__navigation--previous
+      .react-datepicker__navigation-icon::before
+  ),
+:global(
+    .react-datepicker__navigation--next
+      .react-datepicker__navigation-icon::before
+  ),
+:global(
+    .react-datepicker__navigation--previous
+      .react-datepicker__navigation-icon::after
+  ),
+:global(
+    .react-datepicker__navigation--next
+      .react-datepicker__navigation-icon::after
+  ) {
+  border-color: var(--main-color-button);
+}
+
+/* -------------------- Дні тижня (MON, TUE, WED...) -------------------- */
+:global(.react-datepicker__day-names) {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--main-color-button);
+}
+
+:global(.react-datepicker__day-name) {
+  color: var(--main-color-gray);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* -------------------- Сітка днів місяця -------------------- */
+
+:global(.react-datepicker__month) {
+  margin: 12px;
+}
+:global(.react-datepicker__week) {
+  display: flex;
+  justify-content: space-around;
+}
+
+:global(.react-datepicker__day) {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  margin: 2px;
+  border-radius: 50%;
+  color: var(--main-color-black);
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Дні минулого/майбутнього місяців (сірі) */
+:global(.react-datepicker__day--outside-month) {
+  color: var(--main-color-gray);
+}
+
+/* Дні, які можна вибрати (hover) */
+:global(
+    .react-datepicker__day:not(.react-datepicker__day--outside-month):not(
+        .react-datepicker__day--selected
+      ):not(.react-datepicker__day--in-selecting-range):not(
+        .react-datepicker__day--in-range
+      ):hover
+  ) {
+  background-color: #f0f0f0;
+  border-radius: 50%;
+}
+
+/* Вибраний день */
+:global(.react-datepicker__day--selected) {
+  background-color: var(--main-color-button);
+  color: #fff;
+  border-radius: 50%;
+}
+:global(.react-datepicker__day--keyboard-selected) {
+  background-color: var(--main-color-button);
+  color: white;
+}
