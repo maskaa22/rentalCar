@@ -20,7 +20,7 @@ export const fetchCars = createAsyncThunk(
         params.rentalPrice = filters.price;
       }
 
-      // await delay(1000); 
+      // await delay(500); 
       
       const response = await api.get("/cars", { params, signal });
 

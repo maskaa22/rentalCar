@@ -16,7 +16,7 @@ const CatalogPage = () => {
 
   const currenFilters = useSelector(selectNameFilter);
 
-  const [pagePagination, setPagePagination] = useState(page || 1);
+  const [pagePagination, setPagePagination] = useState(1);
   const [prevReduxFilters, setPrevReduxFilters] = useState({});
 
   useEffect(() => {

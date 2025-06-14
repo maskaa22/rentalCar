@@ -21,6 +21,7 @@ const slice = createSlice({
 
         if (action.payload.resetList) {
           state.items = action.payload.cars;
+          state.page = 1;
         } else {
           state.items = [...state.items, ...action.payload.cars];
         }

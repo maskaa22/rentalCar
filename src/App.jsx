@@ -13,15 +13,14 @@ function App() {
   return (
     <>
       <Loader />
-      {/* <Suspense fallback={<div>Loading page...</div>}> */}
-      <Suspense fallback={<Loader />}>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/catalog/:id" element={<CatalogDetailPage />} />
-        </Routes>
-      </Layout>
+      <Suspense fallback={<Loader isSuspense={true} />}>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/catalog/:id" element={<CatalogDetailPage />} />
+          </Routes>
+        </Layout>
       </Suspense>
     </>
   );
