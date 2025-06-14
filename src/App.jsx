@@ -12,7 +12,7 @@ const CatalogDetailPage = lazy(()=> import('./pages/catalogDetailPage/CatalogDet
 function App() {
   return (
     <>
-      {/* <Loader /> */}
+      <Loader />
       {/* <Suspense fallback={<div>Loading page...</div>}> */}
       <Suspense fallback={<Loader />}>
       <Layout>
