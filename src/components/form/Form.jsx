@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Input from "../input/Input";
 
-import c from "./For,.module.css";
+import c from "./Form.module.css";
 import { formSchema } from "../../validations/formSchema";
 import { toast, ToastContainer } from "react-toastify";
 import Calendar from "../calendar/Calendar";
@@ -14,6 +14,7 @@ const Form = () => {
     comment: "",
   });
   const [errors, setErrors] = useState({});
+  const [placeholderText, setPlaceholderText] = useState("Name*");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,6 +88,14 @@ const Form = () => {
     }
   };
 
+  const handleFocus = () => {
+    setPlaceholderText("Name");
+  };
+
+  const handleBlur = () => {
+    setPlaceholderText("Name*");
+  };
+
   return (
     <>
       <form className={c.form} onSubmit={handleSubmit}>
@@ -98,8 +107,10 @@ const Form = () => {
           value={values.nameUser}
           onChange={handleChange}
           classInput={c.input}
-          placeholder="Name*"
+          placeholder={placeholderText}
           name="nameUser"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         <Input
           classInput={c.input}

@@ -6,7 +6,7 @@
   margin-bottom: 56px;
 }
 .select {
-    width: 204px;
+  width: 204px;
 }
 .label {
   font-weight: 400;
@@ -14,7 +14,6 @@
   line-height: 133%;
   color: var(--main-color-gray);
 }
-
 
 .input {
   width: 160px;
@@ -28,7 +27,6 @@
   border-radius: 0 12px 12px 0;
   border-right: none;
 }
-
 
 .mileage .label {
   width: 100%;
@@ -44,4 +42,9 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 125%;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--main-color-button-hover);
 }

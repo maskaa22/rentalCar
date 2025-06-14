@@ -28,7 +28,6 @@ export const store = configureStore({
     brands: BrandsReducer,
     filters: FilterReducer,
     favorites: persistReducer(favoritesPersistConfig, FavoritesReducer),
-    
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

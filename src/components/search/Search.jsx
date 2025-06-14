@@ -83,12 +83,12 @@ const Search = () => {
       </div>
       <div className={c.mileage}>
         <label className={c.label}>Сar mileage / km</label>
-          <Input
-            prefix="From "
-            value={"From " + mileageFrom}
-            onChange={(e) => handleChangeFrom(e, setMileageFrom)}
-            classInput={c.input}
-          />
+        <Input
+          prefix="From "
+          value={"From " + mileageFrom}
+          onChange={(e) => handleChangeFrom(e, setMileageFrom)}
+          classInput={c.input}
+        />
         <Input
           prefix="To "
           value={"To " + mileageTo}
@@ -96,7 +96,7 @@ const Search = () => {
           classInput={c.input}
         />
       </div>
-        
+
       <button className={c.btn} onClick={handleSubmit}>
         Search
       </button>

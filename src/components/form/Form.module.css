@@ -49,3 +49,8 @@ textarea {
   display: block;
   margin: auto;
 }
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--main-color-button-hover);
+}

@@ -40,3 +40,8 @@
   color: white;
   background: var(--main-color-button);
 }
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--main-color-button-hover);
+}

@@ -10,7 +10,9 @@ const HomePage = () => {
         <p className={c.text}>
           Reliable and budget-friendly rentals for any journey
         </p>
-        <button className={c.btn} onClick={() => navigate('/catalog')}>View Catalog</button>
+        <button className={c.btn} onClick={() => navigate("/catalog")}>
+          View Catalog
+        </button>
       </div>
     </div>
   );

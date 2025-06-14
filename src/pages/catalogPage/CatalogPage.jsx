@@ -1,18 +1,26 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import c from "./CatalogPage.module.css";
 import Search from "../../components/search/Search";
 import Cars from "../../components/cars/Cars";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/cars/operations";
-import { selectCars,} from "../../redux/cars/selectors";
+import { selectCars, selectError } from "../../redux/cars/selectors";
 import LoadMore from "../../components/loadMore/LoadMore";
 import { toast, ToastContainer } from "react-toastify";
 import { selectNameFilter } from "../../redux/filters/selectors";
+import { useNavigate } from "react-router-dom";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
-  
+  const navigate = useNavigate();
+
   const { items: cars, page, totalPages } = useSelector(selectCars);
+  const errors = useSelector(selectError);
+
+  const notify = (text) => toast.warning(text);
+  const notifyError = useCallback((text) => {
+    toast.error(text);
+  }, []);
 
   const currenFilters = useSelector(selectNameFilter);
 
@@ -46,8 +54,6 @@ const CatalogPage = () => {
     };
   }, [dispatch, pagePagination, currenFilters, prevReduxFilters]);
 
-  const notify = (text) => toast.warning(text);
-
   const loadMore = () => {
     if (pagePagination < totalPages - 1) {
       setPagePagination((prev) => prev + 1);
@@ -57,14 +63,29 @@ const CatalogPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (errors) {
+      notifyError(`Error: ${errors}`);
+      const timer = setTimeout(() => {
+        navigate("/");
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [errors, notifyError, navigate]);
+
   return (
     <div className="container">
       <div className={c.innerContainer}>
-        <Search />
         <ToastContainer />
-        <Cars cars={cars} />
-        {cars && cars.length > 0 && page < totalPages && (
-          <LoadMore loadMore={loadMore} />
+        {!errors && (
+          <>
+            <Search />
+            <Cars cars={cars} />
+            {cars && cars.length > 0 && page < totalPages && (
+              <LoadMore loadMore={loadMore} />
+            )}
+          </>
         )}
       </div>
     </div>

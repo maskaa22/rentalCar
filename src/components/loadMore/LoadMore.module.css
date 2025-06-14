@@ -11,3 +11,7 @@
   background-color: transparent;
   border-radius: 12px;
 }
+.btn:hover,
+.btn:focus {
+  border: 1px solid var(--main-color-button-hover);
+}

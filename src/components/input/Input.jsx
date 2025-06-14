@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import c from "./Input.module.css";
 
 const Input = ({
   prefix = "",
@@ -8,6 +7,8 @@ const Input = ({
   classInput,
   placeholder,
   name,
+  onFocus,
+  onBlur,
 }) => {
   const inputRef = useRef(null);
 
@@ -59,7 +60,8 @@ const Input = ({
       type="text"
       value={isPrefixUsed ? (value === "" ? prefix : value || prefix) : value}
       onChange={handleChangeInput}
-      onFocus={handleFocus}
+      onFocus={isPrefixUsed ? handleFocus : onFocus}
+      onBlur={!isPrefixUsed ? onBlur : undefined}
       onClick={handleClick}
       placeholder={placeholder}
       name={name}
