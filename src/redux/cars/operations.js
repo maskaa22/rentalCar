@@ -5,7 +5,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
-
+// const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 export const fetchCars = createAsyncThunk(
   "cars/fetchAll",
   async ({ page = 1, signal, filters = {}, resetList = false }, thunkAPI) => {
@@ -15,6 +15,12 @@ export const fetchCars = createAsyncThunk(
         limit: 12,
         ...filters
       }
+
+      if (filters.price) {
+        params.rentalPrice = filters.price;
+      }
+
+      // await delay(1000); 
       
       const response = await api.get("/cars", { params, signal });
 
@@ -35,9 +41,6 @@ export const fetchOneCar = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await api.get(`/cars/${id}`);
-
-      // console.log(response.data);
-      
 
       return response.data;
     } catch (err) {

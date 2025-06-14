@@ -4,7 +4,7 @@ import Search from "../../components/search/Search";
 import Cars from "../../components/cars/Cars";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars } from "../../redux/cars/operations";
-import { selectCars, selectFilteredCars } from "../../redux/cars/selectors";
+import { selectCars,} from "../../redux/cars/selectors";
 import LoadMore from "../../components/loadMore/LoadMore";
 import { toast, ToastContainer } from "react-toastify";
 import { selectNameFilter } from "../../redux/filters/selectors";
@@ -13,7 +13,7 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   
   const { items: cars, page, totalPages } = useSelector(selectCars);
-  const filtersCars = useSelector(selectFilteredCars);
+
   const currenFilters = useSelector(selectNameFilter);
 
   const [pagePagination, setPagePagination] = useState(page || 1);
@@ -27,7 +27,6 @@ const CatalogPage = () => {
 
     if (isNewSearch && pagePagination !== 1) {
       setPagePagination(1);
-
       return;
     }
 
@@ -63,7 +62,7 @@ const CatalogPage = () => {
       <div className={c.innerContainer}>
         <Search />
         <ToastContainer />
-        <Cars cars={filtersCars} />
+        <Cars cars={cars} />
         {cars && cars.length > 0 && page < totalPages && (
           <LoadMore loadMore={loadMore} />
         )}

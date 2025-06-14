@@ -14,10 +14,10 @@ const Header = () => {
             Rental<span>Car</span>
           </p>
           <nav className={c.nav}>
-            <NavLink to="/" className={buildLinkClass}>
+            <NavLink to="/" className={buildLinkClass} end>
               Home
             </NavLink>
-            <NavLink to="/catalog" className={buildLinkClass}>
+            <NavLink to="/catalog" className={buildLinkClass} end>
               Catalog
             </NavLink>
           </nav>
