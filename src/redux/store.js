@@ -14,6 +14,7 @@ import CarsReducer from "./cars/slice";
 import BrandsReducer from "./brands/slice";
 import FilterReducer from "./filters/slice";
 import FavoritesReducer from "./favorites/slice";
+import loaderReducer from "./loader/slice";
 
 const favoritesPersistConfig = {
   key: "favorites",
@@ -22,10 +23,12 @@ const favoritesPersistConfig = {
 
 export const store = configureStore({
   reducer: {
+    loader: loaderReducer,
     cars: CarsReducer,
     brands: BrandsReducer,
     filters: FilterReducer,
     favorites: persistReducer(favoritesPersistConfig, FavoritesReducer),
+    
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
