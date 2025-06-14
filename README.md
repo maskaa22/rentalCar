@@ -67,6 +67,6 @@
 
 ## 📧 Контакти
 
-<p>Розробник - Марія Скидан - [Email](mailto:kyrosika565@gmail.com)</p>
-<p>Профіль GitHub: [мій профіль](https://github.com/maskaa22)</p>
-<p>Профіль LinkedIn: [мій профіль](https://www.linkedin.com/in/mariia-skydan)</p>
+<p>Розробник - Марія Скидан - kyrosika565@gmail.com</p>
+<p>Профіль GitHub - https://github.com/maskaa22</p>
+<p>Профіль LinkedIn - https://www.linkedin.com/in/mariia-skydan</p>
