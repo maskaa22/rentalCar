@@ -1,4 +1,4 @@
-# 🚗 Rental Car Catalog
+# <p text-align="center">🚗 Rental Car Catalog</p>
 
 ## 🌟 Вступ
 
@@ -45,7 +45,7 @@
 4.  **Налаштуйте змінні середовища:**
     Створіть файл `.env` у кореневій директорії проекту та додайте ваш API URL.
     ```
-    VITE_API_URL=[https://car-rental-api](https://car-rental-api)
+    VITE_API_URL=[https://car-rental-api]
     ```
     *Зверніть увагу: замініть URL який вам потрібно*
 
@@ -67,6 +67,6 @@
 
 ## 📧 Контакти
 
-Розробник - Марія Скидан - [Email](mailto:kyrosika565@gmail.com)
-Профіль GitHub: [мій профіль](https://github.com/maskaa22)
-Профіль LinkedIn: [мій профіль](https://www.linkedin.com/in/mariia-skydan)
+<p>Розробник - Марія Скидан - [Email](mailto:kyrosika565@gmail.com)</p>
+<p>Профіль GitHub: [мій профіль](https://github.com/maskaa22)</p>
+<p>Профіль LinkedIn: [мій профіль](https://www.linkedin.com/in/mariia-skydan)</p>
