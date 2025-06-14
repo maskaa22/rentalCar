@@ -1,4 +1,4 @@
-# <p text-align="center">🚗 Rental Car Catalog</p>
+# 🚗 Rental Car Catalog
 
 ## 🌟 Вступ
 
